@@ -1,6 +1,7 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import EastRoundedIcon from '@mui/icons-material/EastRounded';
 import { useState } from "react";
+import CircularIndeterminate from "./loadingApp";
 
 const InputApp = () => {
     const [yourLocation, setYourLocation] = useState({ name: "" });
@@ -12,13 +13,15 @@ const InputApp = () => {
 
     const searchFunction = async () => {
         const isValid = yourLocation.name && goingLocation.name;
-        if (!isValid) return alert("သင်သွားချင်တဲ့ မှတ်တိုင်နာမည်ကို ရေးပေးပါ")
-        const response = await fetch("http://localhost:5000/search", {
+        if (!isValid) return alert("သင်သွားချင်တဲ့ မှတ်တိုင်နာမည်ကို ရေးပေးပါ");
+        setOpen(true);
+        const response = await fetch("https://bus-stop-app-server.vercel.app/search", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({ yourLocation, goingLocation })
         });
         if (response.ok) {
+            setOpen(false)
             const responseJson = await response.json();
             setData(responseJson);
             setYourLocation({ ...yourLocation, name: "" });
@@ -92,6 +95,7 @@ const InputApp = () => {
                         )
                     })}
                 </Box>
+                <CircularIndeterminate open={open} setOpen={() => setOpen(false)} />
             </Box>
         </Box>
     )
