@@ -2,6 +2,7 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import EastRoundedIcon from '@mui/icons-material/EastRounded';
 import { useState } from "react";
 import CircularIndeterminate from "./loadingApp";
+import busStopImage from "../bus-stop.jpg";
 
 const InputApp = () => {
     const [yourLocation, setYourLocation] = useState({ name: "" });
@@ -39,8 +40,11 @@ const InputApp = () => {
         minHeight: 30
     };
     return (
-        <Box>
-            <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt: 10, flexDirection: "column" }}>
+        <Box sx={{}}>
+            <Box>
+                <Typography sx={{ fontFamily: "cursive", mt: 5, color: "#1876d2" }} variant="h4">Bus Stop</Typography>
+            </Box>
+            <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt: 5, flexDirection: "column" }}>
                 <TextField
                     value={yourLocation.name}
                     sx={{ minWidth: 300 }}
@@ -96,6 +100,9 @@ const InputApp = () => {
                     })}
                 </Box>
                 <CircularIndeterminate open={open} setOpen={() => setOpen(false)} />
+                <Box>
+                    <img style={{ width: 300, marginTop: 20, borderRadius: 10 }} src={busStopImage} alt="" />
+                </Box>
             </Box>
         </Box>
     )
