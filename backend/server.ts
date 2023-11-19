@@ -127,9 +127,13 @@ app.post("/search", async (req, res) => {
     const busNumberId = busNumber.filter(item => busNumberIdOne.includes(item.id)).map(item => Number(item.number));
     const busNumberIds = busNumber.filter(item => busNumberIdTwo.includes(item.id)).map(item => Number(item.number));
     const result = busNumberId.filter(item => busNumberIds.includes(item));
-    console.log("result", result);
-    // const busesBusStopIds = buses.filter(item => busStopIds.includes(item.bus_stop_name_id));
-    res.send(result);
+    const resultData = [{ id: result, firstName: yourLocation.name, lastName: goingLocation.name }];
+    res.send(resultData);
+});
+
+app.get("/", (req, res) => {
+    console.log("get strating server...");
+    res.send("get strating server...")
 })
 
 app.listen(port, () => {
