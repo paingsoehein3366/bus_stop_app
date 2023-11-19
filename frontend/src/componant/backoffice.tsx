@@ -86,17 +86,17 @@ const BackOfficeApp = () => {
                         sx={{ minWidth: 300, mt: 1 }} placeholder="Bus Number" type="number"
                     />
                 </Box>
-                <Box>
+                <Box sx={{ display: "flex", justifyContent: "center" }}>
                     <Button onClick={dataFunction} sx={{ minWidth: 300 }} variant="contained">Add</Button>
                 </Box>
-                <Box sx={{ mt: 4 }}>
-                    <Typography sx={{ fontFamily: "sans-serif", mb: 1 }} variant="h5">Result Data</Typography>
-                    <Box sx={{ display: "flex", justifyContent: "center" }}>
+                <Box sx={{ mt: 4, display: "flex", flexDirection: "column", alignItems: "center" }}>
+                    <Typography sx={{ fontFamily: "sans-serif", mb: 1, display: "flex", justifyContent: "center" }} variant="h5">Result Data</Typography>
+                    <Box sx={{ display: "flex", justifyContent: "center", width: { xs: 300, sm: 350, md: 500 } }}>
                         <input
                             type="search"
                             placeholder="ကားမှတ်တိုင်အမည်"
                             style={{
-                                minWidth: 300,
+                                minWidth: "50%",
                                 minHeight: 25,
                                 borderTopLeftRadius: 20,
                                 borderBottomLeftRadius: 20,
@@ -150,10 +150,10 @@ const BackOfficeApp = () => {
                                             borderRadius: 5,
                                             mb: 1
                                         }}>{item.name} မှတ်တိုင်</Typography>
-                                        <Box sx={{ display: "flex", }}>
+                                        <Box sx={{ display: "", }}>
                                             {busNumberId.map(z => {
                                                 return (
-                                                    <Box>
+                                                    <Box sx={{}}>
                                                         <Typography
                                                             variant="h5"
                                                             sx={{
@@ -208,11 +208,11 @@ const BackOfficeApp = () => {
                                         setRunTime({ ...runTime, counter: +1 });
                                     }} variant="contained">add</Button>
                                 </Box>
-                                <Box sx={{ mt: 3, display: "flex", justifyContent: "center", alignItems: "center" }}>
+                                <Box sx={{ mt: 3 }}>
                                     {updateDateCheck.map(item => {
                                         const checkBusNumber = busNumberFromDb.filter(items => items.id === item.bus_number_id);
                                         return (
-                                            <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", m: 1 }}>
+                                            <Box sx={{ display: "flex", justifyContent: "center" }}>
                                                 {checkBusNumber.map(items => {
                                                     return (
                                                         <Box>

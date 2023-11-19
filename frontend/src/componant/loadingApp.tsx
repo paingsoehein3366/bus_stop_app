@@ -12,7 +12,7 @@ export default function CircularIndeterminate({ open, setOpen }: Prop) {
     return (
         <Backdrop open={open} >
             <CircularProgress />
-            <Typography sx={{ fontFamily: "sans-serif", ml: 1, color: "#ffffff" }}>loading</Typography>
+            <Typography sx={{ fontFamily: "sans-serif", ml: 1, color: "#ffffff" }}>ခဏစောင့်ပါ</Typography>
         </Backdrop>
     );
 };
