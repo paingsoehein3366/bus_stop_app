@@ -1,5 +1,6 @@
 import { Box, Button, Dialog, DialogContent, DialogContentText, TextField, Typography } from "@mui/material"
 import { useEffect, useState } from "react";
+import { config } from "../config/config";
 import DeleteApp from "./deleteApp";
 
 const BackOfficeApp = () => {
@@ -29,7 +30,7 @@ const BackOfficeApp = () => {
     const dataFunction = async () => {
         const data = busStopName.inputFromBusStopName && busNumber.inputFromBusNumber;
         if (!data) return alert(" Write busNumber and busStopName!");
-        await fetch("http://localhost:5000/busData", {
+        await fetch(`${config.apiBaseUrl}/busData`, {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({ busStopName, busNumber })
@@ -41,7 +42,7 @@ const BackOfficeApp = () => {
     };
     // from data database
     const fromDataBusStopName = async () => {
-        const response = await fetch("http://localhost:5000/fromDataBusStopName", {
+        const response = await fetch(`${config.apiBaseUrl}/fromDataBusStopName`, {
             method: "GET",
             headers: { "content-type": "application/json" }
         });
@@ -50,7 +51,7 @@ const BackOfficeApp = () => {
     };
     // from data database
     const fromDataBusNumber = async () => {
-        const response = await fetch("http://localhost:5000/fromDataBusNumber", {
+        const response = await fetch(`${config.apiBaseUrl}/fromDataBusNumber`, {
             method: "GET",
             headers: { "content-type": "application/json" }
         });
@@ -59,7 +60,7 @@ const BackOfficeApp = () => {
     };
     // from data database
     const fromDataBuses = async () => {
-        const response = await fetch("http://localhost:5000/fromDataBuses", {
+        const response = await fetch(`${config.apiBaseUrl}/fromDataBuses`, {
             method: "GET",
             headers: { "content-type": "application/json" }
         });
@@ -199,7 +200,7 @@ const BackOfficeApp = () => {
                                         sx={{ minWidth: 200, marginY: 1.5 }} placeholder="bus number" />
                                     <Button onClick={async () => {
                                         if (updateName.number === 0) return alert("write number...")
-                                        await fetch("http://localhost:5000/update", {
+                                        await fetch(`${config.apiBaseUrl}/update`, {
                                             method: "POST",
                                             headers: { "content-type": "application/json" },
                                             body: JSON.stringify({ busUpdateNumber: updateName.number, busStopNameId: updateData.id })
@@ -228,7 +229,7 @@ const BackOfficeApp = () => {
                                                                 }}
                                                             >{items.number}</Typography>
                                                             <Button onClick={async () => {
-                                                                await fetch("http://localhost:5000/busNumberRemove", {
+                                                                await fetch(`${config.apiBaseUrl}/busNumberRemove`, {
                                                                     method: "POST",
                                                                     headers: { "content-type": "application/json" },
                                                                     body: JSON.stringify({ id: item.bus_number_id })
@@ -249,7 +250,7 @@ const BackOfficeApp = () => {
                                     variant="contained"
                                     onClick={async () => {
                                         if (!updateName.name) return setOpen(false);
-                                        await fetch("http://localhost:5000/updateName", {
+                                        await fetch(`${config.apiBaseUrl}/updateName`, {
                                             method: "POST",
                                             headers: { "content-type": "application/json" },
                                             body: JSON.stringify({ newName: updateName.name, id: updateData.id })
@@ -265,7 +266,7 @@ const BackOfficeApp = () => {
                         open={openRemove}
                         setOpen={() => setOpenRemove(false)}
                         removeFunction={async () => {
-                            await fetch("http://localhost:5000/remove", {
+                            await fetch(`${config.apiBaseUrl}/remove`, {
                                 method: "POST",
                                 headers: { "content-type": "application/json" },
                                 body: JSON.stringify({ removeId })
