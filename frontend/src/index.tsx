@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import InputApp from './componant/inputApp';
 import BackOfficeApp from './componant/backoffice';
+import LoginApp from './componant/loginApp';
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
   {
     path: "/backOffice",
     element: <BackOfficeApp />
-  }
+  },
 ])
 
 const root = ReactDOM.createRoot(

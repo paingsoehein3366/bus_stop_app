@@ -130,6 +130,23 @@ app.post("/search", async (req, res) => {
     const resultData = [{ id: result, firstName: yourLocation.name, lastName: goingLocation.name }];
     res.send(resultData);
 });
+// login
+app.post("/login", async (req, res) => {
+    const { userName, password } = req.body;
+    const isVaild = userName && password;
+    if (!isVaild) return res.send(400);
+    console.log("userName : ", userName, " password : ", password);
+    const loginFromDatabaseRows = await db.query("select * from login");
+    const loginFromDatabase = loginFromDatabaseRows.rows;
+
+    const checkUserName = loginFromDatabase.filter(item => item.user_name === userName);
+    if (!checkUserName.length) return res.send(401);
+
+    const checkPassword = loginFromDatabase.filter(item => item.password === password);
+    if (!checkPassword.length) return res.send(402);
+
+    res.send(200);
+});
 
 app.get("/", (req, res) => {
     console.log("get strating server...");

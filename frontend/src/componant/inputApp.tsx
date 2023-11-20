@@ -43,7 +43,14 @@ const InputApp = () => {
     };
     return (
         <Box sx={{}}>
-            <Box sx={{ display: "flex", justifyContent: { xs: "space-between", md: "center" }, p: 2 }}>
+            <Box sx={{
+                display: "flex",
+                justifyContent: { xs: "space-between", md: "center" },
+                bgcolor: "#eaeaec",
+                p: 2,
+                position: "sticky",
+                top: 0
+            }}>
                 <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", color: "#1876d2", }}>
                     <DirectionsBusRoundedIcon sx={{ fontSize: 40 }} />
                     <Typography sx={{ fontFamily: "cursive", color: "#1876d2" }} variant="h4">Bus Stop</Typography>
