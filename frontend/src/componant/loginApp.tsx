@@ -50,7 +50,7 @@ const LoginApp = ({ open, setOpen }: Prop) => {
                     top: 0
                 }}>
                     <DirectionsBusRoundedIcon sx={{ fontSize: 40, color: "#2acfcd" }} />
-                    <ClearRoundedIcon onClick={setOpen} sx={{ fontSize: 37, color: "#2acfcd" }} />
+                    <ClearRoundedIcon onClick={setOpen} sx={{ fontSize: 37, color: "#2acfcd", cursor: "pointer" }} />
                 </Box>
                 <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "space-around", height: "100vh" }}>
                     <Box sx={{ display: "flex", justifyContent: "center" }}>
