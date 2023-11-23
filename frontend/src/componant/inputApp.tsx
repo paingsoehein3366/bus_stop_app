@@ -98,7 +98,17 @@ const InputApp = () => {
                         setLanguage={() => setLanguageApp("Language")}
                     />
                 </Box>
-                <MenuRoundedIcon onClick={() => setOpenDrawer(true)} sx={{ fontSize: 35, color: "#199f9d", display: { xs: "flex", md: "none" } }} />
+                <MenuRoundedIcon
+                    onClick={() => setOpenDrawer(true)}
+                    sx={{
+                        fontSize: 35,
+                        color: "#199f9d",
+                        display: { xs: "flex", md: "none" },
+                        transition: "font-size 0.5s",
+                        "&&:hover": { fontSize: 45 },
+                        cursor: "pointer"
+                    }}
+                />
             </Box>
             <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt: 5, flexDirection: "column" }}>
                 <TextField
@@ -116,7 +126,16 @@ const InputApp = () => {
                     placeholder={language.language2}
                     onChange={(evt) => setGoingLocation({ ...goingLocation, name: evt.target.value })}
                 />
-                <Button onClick={searchFunction} variant="contained">{search}</Button>
+                <Button
+                    sx={{
+                        width: 70,
+                        height: 40,
+                        transition: "width 0.5s,height 0.5s",
+                        "&&:hover": { width: 74, height: 44 }
+                    }}
+                    onClick={searchFunction}
+                    variant="contained"
+                >{search}</Button>
             </Box>
             <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", mt: 3 }}>
                 <Box
@@ -127,7 +146,18 @@ const InputApp = () => {
                     {data.map(item => {
                         return (
                             <Box>
-                                <Box sx={{ display: "flex", bgcolor: "#2acfcd", minWidth: 300, minHeight: 30, justifyContent: "center", alignItems: "center", borderRadius: 10, p: 2 }}>
+                                <Box sx={{
+                                    display: "flex",
+                                    bgcolor: "#2acfcd",
+                                    width: 300,
+                                    height: 30,
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    borderRadius: 10,
+                                    p: 2,
+                                    transition: "width 0.5s,height 0.5s",
+                                    "&&:hover": { width: 310, height: 35 }
+                                }}>
                                     <Typography sx={{ fontFamily: "sans-serif" }} variant="h6">{item.firstName}</Typography>
                                     <Typography sx={{ marginX: 2, color: "red" }} variant="h6">{to}</Typography>
                                     <Typography sx={{ fontFamily: "sans-serif" }} variant="h6">{item.lastName}</Typography>
@@ -170,8 +200,14 @@ const InputApp = () => {
                     setLanguage={() => setLanguageApp("Language")}
                 />
                 <LoginApp open={loginOpen} setOpen={() => setLoginOpen(false)} />
-                <Box>
-                    <img style={{ width: 300, marginTop: 20, borderRadius: 10 }} src={busStopImage} alt="" />
+                <Box
+                    sx={{
+                        display: "flex",
+                        width: 300,
+                        transition: "width 0.5s,height 0.5s",
+                        "&&:hover": { width: 310 },
+                    }}>
+                    <img style={{ width: "100%", marginTop: 20, borderRadius: 10 }} src={busStopImage} alt="" />
                 </Box>
             </Box>
         </Box>
