@@ -15,7 +15,6 @@ interface Prop {
 const LanguageApp = ({ Arakan, English, Myanmar, Japan, setLanguage, language }: Prop) => {
     return (
         <Box>
-
             <FormControl sx={{ minWidth: 150 }}>
                 <InputLabel>{language}</InputLabel>
                 <Select label="languages" sx={{ border: "none" }} >

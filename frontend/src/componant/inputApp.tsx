@@ -9,11 +9,12 @@ import LoginApp from "./loginApp";
 import LanguageRoundedIcon from '@mui/icons-material/LanguageRounded';
 import AirportShuttleRoundedIcon from '@mui/icons-material/AirportShuttleRounded';
 import LanguageApp from "./languageApp";
+import { config } from "../config/config";
 
 const InputApp = () => {
     const [yourLocation, setYourLocation] = useState({ name: "" });
     const [goingLocation, setGoingLocation] = useState({ name: "" });
-    const [data, setData] = useState([{ id: [], firstName: "", lastName: "" }])
+    const [data, setData] = useState([{ id: [], firstName: "", lastName: "" }]);
     const [open, setOpen] = useState(false);
     const [openDrawer, setOpenDrawer] = useState(false);
     const [loginOpen, setLoginOpen] = useState(false);
@@ -22,12 +23,13 @@ const InputApp = () => {
     const [busNumber, setBusNumber] = useState("ဘ(စ်)ကား နံပတ်");
     const [to, setTo] = useState("မှ");
     const [languageApp, setLanguageApp] = useState("Languages");
+    console.log("data: ", data);
 
     const searchFunction = async () => {
         const isValid = yourLocation.name && goingLocation.name;
         if (!isValid) return alert("သင်သွားချင်တဲ့ မှတ်တိုင်နာမည်ကို ရေးပေးပါ");
         setOpen(true);
-        const response = await fetch("https://bus-stop-app-server.vercel.app/search", {
+        const response = await fetch(`${config.apiBaseUrl}/search`, {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({ yourLocation, goingLocation })
@@ -69,7 +71,7 @@ const InputApp = () => {
         setBusNumber("バス　番号");
         setTo("から");
         setLanguageApp("Japan");
-    }
+    };
     return (
         <Box>
             <Box
@@ -206,7 +208,8 @@ const InputApp = () => {
                         width: 300,
                         transition: "width 0.5s,height 0.5s",
                         "&&:hover": { width: 310 },
-                    }}>
+                    }}
+                >
                     <img style={{ width: "100%", marginTop: 20, borderRadius: 10 }} src={busStopImage} alt="" />
                 </Box>
             </Box>

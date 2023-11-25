@@ -102,10 +102,9 @@ app.post("/updateName", async (req, res) => {
 // search
 app.post("/search", async (req, res) => {
     const { yourLocation, goingLocation } = req.body;
-    console.log(yourLocation, goingLocation);
 
     if (!yourLocation.length && goingLocation.length) return res.send(400);
-    const busStopRows = await db.query("select * from bus_stop_names");
+    const busStopRows = await db.query("select * from bus_stop_names where is_archived = false");
     const busStopData = busStopRows.rows;
     const busesRows = await db.query("select * from buses");
     const buses = busesRows.rows;
@@ -121,14 +120,21 @@ app.post("/search", async (req, res) => {
     const busNumberIdOne = busesStopOne.map(item => item.bus_number_id);
     const busNumberIdTwo = busesStopTwo.map(item => item.bus_number_id);
 
-    const busNumberRows = await db.query("select * from bus_number");
+    const busNumberRows = await db.query("select * from bus_number where is_archived = false");
     const busNumber = busNumberRows.rows;
 
     const busNumberId = busNumber.filter(item => busNumberIdOne.includes(item.id)).map(item => Number(item.number));
     const busNumberIds = busNumber.filter(item => busNumberIdTwo.includes(item.id)).map(item => Number(item.number));
     const result = busNumberId.filter(item => busNumberIds.includes(item));
     const resultData = [{ id: result, firstName: yourLocation.name, lastName: goingLocation.name }];
-    res.send(resultData);
+
+    if (result.length === 0) {
+        const resultCheckData = [{ id: ["Not Result"], firstName: yourLocation.name, lastName: goingLocation.name }];
+        return res.send(resultCheckData);
+    } else {
+        res.send(resultData);
+    }
+
 });
 // login
 app.post("/login", async (req, res) => {

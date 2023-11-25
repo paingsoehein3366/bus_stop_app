@@ -195,7 +195,7 @@ const BackOfficeApp = () => {
                                         sx={{ minWidth: 200 }}
                                     />
                                     <TextField
-                                        defaultValue={updateName.number}
+                                        value={updateName.number}
                                         onChange={(evt) => setUpdateName({ ...updateName, number: Number(evt.target.value) })}
                                         sx={{ minWidth: 200, marginY: 1.5 }} placeholder="bus number" />
                                     <Button onClick={async () => {
