@@ -129,7 +129,7 @@ app.post("/search", async (req, res) => {
     const resultData = [{ id: result, firstName: yourLocation.name, lastName: goingLocation.name }];
 
     if (result.length === 0) {
-        const resultCheckData = [{ id: ["Not Result"], firstName: yourLocation.name, lastName: goingLocation.name }];
+        const resultCheckData = [{ id: ["No Result"], firstName: yourLocation.name, lastName: goingLocation.name }];
         return res.send(resultCheckData);
     } else {
         res.send(resultData);
