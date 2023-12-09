@@ -18,7 +18,7 @@ const LoginApp = ({ open, setOpen }: Prop) => {
 
     const backOffice = async () => {
         const isValid = userName.userName && password.password;
-        if (!isValid) return alert("Write userName and password");
+        if (!isValid) return alert("Enter userName and password");
         setLoadingOpen(true);
         const response = await fetch(`${config.apiBaseUrl}/login`, {
             method: "POST",

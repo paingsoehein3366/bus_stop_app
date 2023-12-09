@@ -29,7 +29,7 @@ const BackOfficeApp = () => {
 
     const dataFunction = async () => {
         const data = busStopName.inputFromBusStopName && busNumber.inputFromBusNumber;
-        if (!data) return alert(" Write busNumber and busStopName!");
+        if (!data) return alert(" Enter busNumber and busStopName!");
         await fetch(`${config.apiBaseUrl}/busData`, {
             method: "POST",
             headers: { "content-type": "application/json" },
