@@ -4,9 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import InputApp from './componant/inputApp';
-import BackOfficeApp from './componant/backoffice';
-import LoginApp from './componant/loginApp';
+import InputApp from './component/inputApp';
+import BackOfficeApp from './component/backoffice';
+import LoginApp from './component/loginApp';
 
 const router = createBrowserRouter([
   {
